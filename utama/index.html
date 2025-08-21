@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSUP Surabaya - Pelayanan Kesehatan Profesional</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="icon" type="image/x-icon" href="favicon.png">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-bg {
+            background-image: url('banner.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .chat-box {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <span class="text-2xl font-bold text-gray-800">RSUP Surabaya</span>
+            </a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#layanan" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Layanan</a>
+                <a href="#profil" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Profil</a>
+                <a href="#kontak" class="text-gray-600 hover:text-blue-600 transition duration-300 font-medium">Kontak</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg h-screen flex items-center justify-center text-center text-white relative">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="relative z-10 px-6 sm:px-12">
+            <h1 class="text-4xl sm:text-6xl font-extrabold leading-tight tracking-wide mb-4 animate-fade-in-up">
+                Pelayanan Kesehatan Terbaik untuk Anda
+            </h1>
+            <p class="text-lg sm:text-xl max-w-2xl mx-auto mb-8 opacity-90 animate-fade-in-up delay-200">
+                RSUP Surabaya berkomitmen menyediakan fasilitas kesehatan modern dengan tenaga medis profesional.
+            </p>
+            <a href="#layanan" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 animate-fade-in-up delay-400">
+                Lihat Layanan Kami
+            </a>
+        </div>
+    </section>
+
+    <!-- Layanan Kami Section -->
+    <section id="layanan" class="py-20 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Layanan Unggulan Kami</h2>
+            <p class="text-gray-600 mb-12 max-w-3xl mx-auto">Kami menyediakan berbagai layanan medis yang komprehensif, didukung oleh teknologi terkini dan tim dokter ahli.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card Layanan 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
+                    <div class="flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 text-blue-600 mx-auto mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.018A9.955 9.955 0 0112 2a9.96 9.96 0 018.382 5.982M3.982 8.382A9.955 9.955 0 012 12a9.96 9.96 0 015.982 8.382M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Instalasi Gawat Darurat (IGD)</h3>
+                    <p class="text-gray-500">Siaga 24/7 untuk penanganan kasus medis darurat dengan respon cepat dan efisien.</p>
+                </div>
+                <!-- Card Layanan 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
+                    <div class="flex items-center justify-center w-16 h-16 rounded-full bg-red-100 text-red-600 mx-auto mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Pusat Jantung & Stroke</h3>
+                    <p class="text-gray-500">Layanan terpadu untuk diagnosis, pengobatan, dan rehabilitasi penyakit jantung dan stroke.</p>
+                </div>
+                <!-- Card Layanan 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
+                    <div class="flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-600 mx-auto mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M12 20.94a9.976 9.976 0 01-3.616-2.036m3.616 2.036c.394 0 .78.077 1.144.227m-.293-.227a9.976 9.976 0 00-3.616-2.036m3.616 2.036c.394 0 .78.077 1.144.227M12 4.354a4 4 0 110 5.292m0-5.292c.249 0 .49.03.722.087m-.722-.087c-.249 0-.49-.03-.722-.087M12 20.94a9.976 9.976 0 01-3.616-2.036m3.616 2.036c.394 0 .78.077 1.144.227m-.293-.227a9.976 9.976 0 00-3.616-2.036m3.616 2.036c.394 0 .78.077 1.144.227" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Onkologi (Kanker)</h3>
+                    <p class="text-gray-500">Pusat layanan komprehensif untuk pencegahan, diagnosis, dan pengobatan kanker.</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Profil & Visi Misi Section -->
+    <section id="profil" class="bg-gray-100 py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Falsafah Rumah Sakit</h2>
+            <p class="text-gray-600 mb-12 max-w-3xl mx-auto">Menjadi mitra sehat yang handal dan berempati dalam melayani masyarakat</p>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-12">
+                <div class="bg-white p-8 rounded-xl shadow-lg md:w-1/2" style="min-height: 230px;">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Visi</h3>
+                    <p id="visi-text" class="text-gray-500">Menjadi rumah sakit rujukan dalam pelayanan kanker, jantung, stroke dan uronefrologi yang bertaraf internasional dengan pertumbuhan berkelanjutan.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg md:w-1/2" style="min-height: 230px;">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Misi</h3>
+                    <ul id="misi-text" class="text-left text-gray-500 list-disc list-inside">
+                        <li>Memberikan pelayanan kesehatan yang bermutu dengan berorientasi pada keselamatan pasien.</li>
+                        <li>Menyelenggarakan proses bisnis rumah sakit yang produktif dan akuntabel.</li>
+                        <li>Meningkatkan sistem, proses dan manajemen operasional rumah sakit secara efektif dan efisien melalui digitalisasi pelayanan.</li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <section class="bg-blue-600 text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">Butuh Bantuan Cepat?</h2>
+            <p class="text-lg mb-8 opacity-90">Tim kami siap 24/7 untuk melayani Anda. Hubungi RS Kemenkes Surabaya Care line 1500 056
+.</p>
+            <a href="#" class="bg-white text-blue-600 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                Hubungi Kami Sekarang
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="kontak" class="bg-gray-800 text-gray-300 py-12">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <!-- Kolom 1: Alamat -->
+            <div>
+                <h3 class="font-bold text-lg mb-4 text-white">RSUP Surabaya</h3>
+                <p>Jl. Indrapura No.17, Surabaya, Jawa Timur</p>
+                <p>Whatsapp: 6281130788088</p>
+            </div>
+            <!-- Kolom 2: Tautan Cepat -->
+            <div>
+                <h3 class="font-bold text-lg mb-4 text-white">Tautan Cepat</h3>
+                <ul>
+                    <li><a href="#layanan" class="hover:text-white transition duration-200">Layanan</a></li>
+                    <li><a href="#profil" class="hover:text-white transition duration-200">Profil</a></li>
+                    <li><a href="https://linktr.ee/rssurabaya" class="hover:text-white transition duration-200">Tautan Lain</a></li>
+                </ul>
+            </div>
+            <!-- Kolom 3: Sosial Media -->
+            <div>
+                <h3 class="font-bold text-lg mb-4 text-white">Ikuti Kami</h3>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <a href="https://www.instagram.com/kemenkes.rs.surabaya" class="hover:text-white transition duration-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="30" height="30" viewBox="0 0 256 256" xml:space="preserve">
+						<g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+							<path d="M 45 8.109 c 12.015 0 13.439 0.046 18.184 0.262 c 4.387 0.2 6.77 0.933 8.356 1.549 c 1.955 0.721 3.723 1.872 5.174 3.366 c 1.495 1.452 2.645 3.22 3.366 5.174 c 0.616 1.586 1.349 3.968 1.549 8.356 c 0.216 4.745 0.262 6.168 0.262 18.184 s -0.046 13.439 -0.262 18.184 c -0.2 4.387 -0.933 6.77 -1.549 8.356 c -1.514 3.924 -4.616 7.026 -8.54 8.54 c -1.586 0.616 -3.968 1.349 -8.356 1.549 C 58.44 81.847 57.016 81.893 45 81.893 S 31.56 81.847 26.816 81.63 c -4.387 -0.2 -6.77 -0.933 -8.356 -1.549 c -1.955 -0.721 -3.723 -1.872 -5.174 -3.366 c -1.495 -1.452 -2.645 -3.22 -3.366 -5.174 c -0.616 -1.586 -1.349 -3.968 -1.549 -8.356 c -0.216 -4.745 -0.262 -6.168 -0.262 -18.184 S 8.154 31.562 8.37 26.816 c 0.2 -4.387 0.933 -6.77 1.549 -8.356 c 0.721 -1.955 1.872 -3.723 3.367 -5.174 c 1.452 -1.495 3.22 -2.645 5.174 -3.366 c 1.586 -0.616 3.968 -1.349 8.356 -1.549 C 31.561 8.154 32.984 8.108 45 8.109 M 45 0 C 32.779 0 31.246 0.052 26.447 0.271 c -4.79 0.219 -8.061 0.979 -10.923 2.092 c -3.003 1.13 -5.723 2.901 -7.97 5.19 c -2.29 2.248 -4.061 4.968 -5.192 7.97 c -1.112 2.862 -1.872 6.133 -2.09 10.923 C 0.052 31.246 0 32.779 0 45 s 0.052 13.754 0.272 18.553 c 0.219 4.79 0.979 8.061 2.092 10.923 c 1.13 3.003 2.901 5.723 5.19 7.97 c 2.248 2.289 4.968 4.06 7.97 5.19 c 2.862 1.112 6.133 1.873 10.923 2.092 C 31.247 89.948 32.779 90 45 90 s 13.754 -0.052 18.553 -0.271 c 4.79 -0.219 8.061 -0.979 10.923 -2.092 c 6.044 -2.338 10.823 -7.116 13.161 -13.161 c 1.112 -2.862 1.873 -6.133 2.092 -10.923 C 89.948 58.754 90 57.221 90 45 s -0.052 -13.754 -0.271 -18.553 c -0.219 -4.79 -0.979 -8.061 -2.092 -10.923 c -1.13 -3.003 -2.901 -5.723 -5.19 -7.97 c -2.248 -2.29 -4.968 -4.061 -7.971 -5.191 c -2.862 -1.112 -6.133 -1.872 -10.923 -2.09 C 58.754 0.052 57.221 0 45 0 L 45 0 L 45 0 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(166,55,149); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+							<path d="M 45 21.892 c -12.762 0 -23.108 10.346 -23.108 23.108 S 32.238 68.108 45 68.108 S 68.108 57.762 68.108 45 l 0 0 C 68.108 32.238 57.762 21.892 45 21.892 z M 45 60 c -8.284 0 -15 -6.716 -15 -15 s 6.716 -15 15 -15 c 8.284 0 15 6.716 15 15 C 60 53.284 53.284 60 45 60 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(166,55,149); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+							<circle cx="69.02" cy="20.98" r="5.4" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(166,55,149); fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
+						</g>
+						</svg>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 text-center text-gray-500">
+            <p>&copy; 2025 RSUP Surabaya. Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript untuk API Gemini -->
+    <script>
+        // Fungsi untuk mengonversi PCM ke WAV
+        function pcmToWav(pcmData, sampleRate) {
+            const numChannels = 1;
+            const bytesPerSample = 2; // 16-bit PCM
+            const dataLength = pcmData.byteLength;
+            const buffer = new ArrayBuffer(44 + dataLength);
+            const view = new DataView(buffer);
+
+            let offset = 0;
+            function writeString(str) {
+                for (let i = 0; i < str.length; i++) {
+                    view.setUint8(offset++, str.charCodeAt(i));
+                }
+            }
+
+            function writeUint32(val) {
+                view.setUint32(offset, val, true);
+                offset += 4;
+            }
+
+            function writeUint16(val) {
+                view.setUint16(offset, val, true);
+                offset += 2;
+            }
+
+            // RIFF header
+            writeString('RIFF');
+            writeUint32(36 + dataLength);
+            writeString('WAVE');
+
+            // fmt chunk
+            writeString('fmt ');
+            writeUint32(16);
+            writeUint16(1); // Audio format: PCM
+            writeUint16(numChannels);
+            writeUint32(sampleRate);
+            writeUint32(sampleRate * numChannels * bytesPerSample);
+            writeUint16(numChannels * bytesPerSample);
+            writeUint16(bytesPerSample * 8);
+
+            // data chunk
+            writeString('data');
+            writeUint32(dataLength);
+
+            // Write PCM audio data
+            const pcm16 = new Int16Array(pcmData);
+            for (let i = 0; i < pcm16.length; i++) {
+                view.setInt16(offset, pcm16[i], true);
+                offset += 2;
+            }
+
+            return new Blob([view], { type: 'audio/wav' });
+        }
+
+        // Fungsi untuk mengonversi base64 ke ArrayBuffer
+        function base64ToArrayBuffer(base64) {
+            const binaryString = atob(base64);
+            const len = binaryString.length;
+            const bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            return bytes.buffer;
+        }
+
+        // Asisten Kesehatan Virtual
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatInput = document.getElementById('chat-input');
+            const chatSendBtn = document.getElementById('chat-send-btn');
+            const chatBox = document.getElementById('chat-box');
+            const statusMessage = document.getElementById('status-message');
+
+            const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=";
+            let chatHistory = [];
+
+            function appendMessage(sender, text) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('p-2', 'rounded-lg', 'my-2', 'max-w-[80%]');
+                if (sender === 'user') {
+                    messageDiv.classList.add('bg-blue-500', 'text-white', 'ml-auto', 'text-right');
+                } else {
+                    messageDiv.classList.add('bg-gray-200', 'text-gray-800', 'mr-auto', 'text-left');
+                }
+                messageDiv.textContent = text;
+                chatBox.appendChild(messageDiv);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+
+            async function sendMessage() {
+                const prompt = chatInput.value.trim();
+                if (prompt === '') return;
+
+                appendMessage('user', prompt);
+                chatInput.value = '';
+                statusMessage.textContent = 'Mengetik...';
+
+                try {
+                    const userPrompt = `Tanggapi pertanyaan berikut dengan bahasa Indonesia. Berikan jawaban yang ringkas, akurat, dan informatif. Jangan membuat informasi medis yang tidak berdasar. Pertanyaan: "${prompt}"`;
+                    chatHistory.push({ role: "user", parts: [{ text: userPrompt }] });
+
+                    const payload = {
+                        contents: chatHistory
+                    };
+
+                    const response = await fetch(API_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 && result.candidates[0].content && result.candidates[0].content.parts.length > 0) {
+                        const botResponse = result.candidates[0].content.parts[0].text;
+                        appendMessage('bot', botResponse);
+                        chatHistory.push({ role: "model", parts: [{ text: botResponse }] });
+                    } else {
+                        appendMessage('bot', 'Maaf, saya tidak dapat memproses permintaan ini. Silakan coba lagi.');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    appendMessage('bot', 'Terjadi kesalahan. Mohon maaf, silakan coba lagi nanti.');
+                } finally {
+                    statusMessage.textContent = '';
+                }
+            }
+
+            chatSendBtn.addEventListener('click', sendMessage);
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+
+            // Text-to-Speech untuk Profil Rumah Sakit
+            const playProfileBtn = document.getElementById('play-profile-btn');
+            const visiText = document.getElementById('visi-text').textContent;
+            const misiText = Array.from(document.querySelectorAll('#misi-text li')).map(li => li.textContent).join('. ');
+            const fullText = `Berikut visi dan misi Rumah Sakit Kemenkes Surabaya. Visi: ${visiText}. Misi: ${misiText}`;
+
+            playProfileBtn.addEventListener('click', async () => {
+                const payload = {
+                    contents: [{
+                        parts: [{ text: fullText }]
+                    }],
+                    generationConfig: {
+                        responseModalities: ["AUDIO"],
+                        speechConfig: {
+                            voiceConfig: {
+                                prebuiltVoiceConfig: { voiceName: "Kore" }
+                            }
+                        }
+                    },
+                    model: "gemini-2.5-flash-preview-tts"
+                };
+
+                playProfileBtn.textContent = 'Memuat Audio...';
+                playProfileBtn.disabled = true;
+
+                try {
+                    const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=", {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) throw new Error('Network response was not ok');
+
+                    const result = await response.json();
+                    const audioData = result?.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
+                    const mimeType = result?.candidates?.[0]?.content?.parts?.[0]?.inlineData?.mimeType;
+
+                    if (audioData && mimeType && mimeType.startsWith("audio/")) {
+                        const sampleRate = parseInt(mimeType.match(/rate=(\d+)/)[1], 10);
+                        const pcmData = base64ToArrayBuffer(audioData);
+                        const pcm16 = new Int16Array(pcmData);
+                        const wavBlob = pcmToWav(pcm16, sampleRate);
+                        const audioUrl = URL.createObjectURL(wavBlob);
+                        const audio = new Audio(audioUrl);
+                        audio.play();
+                        audio.onended = () => {
+                            URL.revokeObjectURL(audioUrl);
+                            playProfileBtn.textContent = 'Dengarkan Visi & Misi';
+                            playProfileBtn.disabled = false;
+                        };
+                    } else {
+                        console.error("Audio data not found in response.");
+                        playProfileBtn.textContent = 'Terjadi Kesalahan';
+                    }
+
+                } catch (error) {
+                    console.error('Error playing audio:', error);
+                    playProfileBtn.textContent = 'Terjadi Kesalahan';
+                } finally {
+                    playProfileBtn.disabled = false;
+                    playProfileBtn.textContent = 'Dengarkan Visi & Misi';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+<?php
+
+namespace App\Filament\Widgets;
+
+use Filament\Widgets\Widget;
+
+class NilaiPegawaiWidget extends Widget
+{
+    protected static ?int $sort = 4;
+    protected static string $view = 'filament.widgets.nilai-pegawai-widget';
+}
