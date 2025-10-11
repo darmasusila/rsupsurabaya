@@ -14,6 +14,19 @@ class ManageStrukturals extends ManageRecords
     {
         return [
             Actions\CreateAction::make(),
+            Actions\Action::make('sync')
+                ->label('Sync Struktural')
+                ->color('success')
+                ->icon('heroicon-o-arrow-path')
+                ->action(
+                    function () {
+                        \App\Http\Controllers\SyncController::syncStruktural();
+                        session()->flash('success', 'Data struktural berhasil disinkronkan');
+                    }
+                )
+                ->requiresConfirmation()
+                ->modalHeading('Sync Struktural')
+                ->modalSubheading('Apakah anda yakin ingin mensync data struktural dari data coba?'),
         ];
     }
 }

@@ -98,4 +98,25 @@ class Pegawai extends Model
     {
         return $this->hasMany(Pegawai::class);
     }
+
+    public function cutis()
+    {
+        return $this->hasMany(Cuti::class, 'pegawai_id');
+    }
+
+    public function plafonCutis()
+    {
+        return $this->hasMany(PlafonCuti::class, 'pegawai_id');
+    }
+
+    public function getAtasanAttribute()
+    {
+        if ($this->unit_id) {
+            $struktural_id = Unit::find($this->unit_id)->struktural_id;
+            $struktural = Struktural::find($struktural_id);
+            $atasanPegawai = Pegawai::where('struktural_id', $struktural_id)->first();
+            return $atasanPegawai ? '<p>Tenaga Ahli ' . $struktural->nama . '</p><b>' . $atasanPegawai->biodata->nama . '</b>' : 'N/A';
+        }
+        return 'N/A';
+    }
 }

@@ -14,6 +14,8 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Clusters\Referensi;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Filters\MultiSelectFilter;
 
 class UnitResource extends Resource
 {
@@ -23,7 +25,7 @@ class UnitResource extends Resource
     protected static ?string $navigationLabel = 'Unit Kerja';
     protected static ?string $pluralModelLabel = 'Unit Kerja';
     protected static ?string $cluster = Referensi::class;
-    protected static ?int $navigationSort = 6;
+    protected static ?int $navigationSort = 7;
 
     public static function form(Form $form): Form
     {
@@ -35,6 +37,12 @@ class UnitResource extends Resource
                             ->label('Nama Unit Kerja')
                             ->required()
                             ->maxLength(255),
+
+                        Forms\Components\Select::make('departemen_id')
+                            ->label('Departemen')
+                            ->required()
+                            ->relationship('departemen', 'nama')
+                            ->searchable(),
                         Forms\Components\Select::make('direktorat_id')
                             ->label('Direktorat')
                             ->required()
@@ -44,6 +52,9 @@ class UnitResource extends Resource
                             ->label('Struktural')
                             ->required()
                             ->relationship('struktural', 'nama')
+                            ->options(function (callable $get) {
+                                return \App\Models\Struktural::pluck('nama', 'id');
+                            })
                             ->searchable(),
                         Forms\Components\TextInput::make('keterangan')
                             ->label('Keterangan')
@@ -60,15 +71,16 @@ class UnitResource extends Resource
                 Tables\Columns\TextColumn::make('nama')
                     ->label('Nama Unit Kerja')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('departemen.nama')
+                    ->label('Departemen')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('direktorat.nama')
                     ->label('Direktorat')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('struktural.nama')
-                    ->label('Struktural')
-                    ->searchable(),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('departemen')->relationship('departemen', 'nama'),
+                Tables\Filters\SelectFilter::make('direktorat')->relationship('direktorat', 'nama'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

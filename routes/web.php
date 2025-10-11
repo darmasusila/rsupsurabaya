@@ -15,3 +15,4 @@ Route::post('/register', [App\Http\Controllers\MyController::class, 'registerSto
 
 Route::get('/gotopost/{id}', [App\Http\Controllers\MyController::class, 'goToPost'])->name('post.goTo')->middleware('auth');
 Route::get('/openfile/{fileName}', [App\Http\Controllers\MyController::class, 'openFile'])->name('file.open')->middleware('auth');
+Route::get('/cetakcuti/{id}', [App\Http\Controllers\MyController::class, 'cetak_cuti'])->name('cuti.cetak')->middleware('auth');

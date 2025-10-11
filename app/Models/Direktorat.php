@@ -32,9 +32,4 @@ class Direktorat extends Model
     {
         return $this->hasMany(Pegawai::class);
     }
-
-    public function getNamaAttribute($value)
-    {
-        return ucwords(strtolower($value));
-    }
 }

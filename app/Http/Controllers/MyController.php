@@ -89,19 +89,38 @@ class MyController extends Controller
             return redirect()->back()->withErrors(['nik' => 'NIK tidak valid dengan nama ' . $biodata->nama . '.']);
         }
 
-        // Create the user
-        $data = [
-            'nik' => $request->nik,
-            'name' => $biodata->nama,
-            'email' => $request->email,
-            // 'email_verified_at' => now(), // Set verified to true
-            'password' => bcrypt('password'), // use NIK as password
-        ];
-        $user = \App\Models\User::create($data);
+        try {
+            // Create the user
+            $data = [
+                'nik' => $request->nik,
+                'name' => $biodata->nama,
+                'email' => $request->email,
+                'email_verified_at' => now(), // Set verified to true
+                'password' => bcrypt('password'), // use NIK as password
+            ];
+            $user = \App\Models\User::create($data);
 
-        $user->assignRole('User');
+            // update biodata
+            $biodata->email = $request->email;
+            $biodata->save();
 
-        Auth::login($user);
-        return redirect()->route('filament.admin.pages.dashboard')->with('success', 'Registration successful!');
+            $user->assignRole('User');
+
+            Auth::login($user);
+            return redirect()->route('filament.admin.pages.dashboard')->with('success', 'Registration successful!');
+        } catch (\Throwable $th) {
+            //throw $th;
+            return redirect()->back()->withErrors(['error' => 'Registration failed: ' . $th->getMessage()]);
+        }
+    }
+
+    public static function cetak_cuti($id)
+    {
+        // $id = decrypt($id);
+        $cuti = \App\Models\Cuti::find($id);
+        if ($cuti) {
+            return view('cuti', compact('cuti'));
+        }
+        return redirect()->back()->with('error', 'Cuti not found.');
     }
 }

@@ -14,6 +14,19 @@ class ManageStatusKepegawaians extends ManageRecords
     {
         return [
             Actions\CreateAction::make(),
+            Actions\Action::make('sync')
+                ->label('Sync Status Kepegawaian')
+                ->color('success')
+                ->icon('heroicon-o-arrow-path')
+                ->action(
+                    function () {
+                        \App\Http\Controllers\SyncController::syncStatus();
+                        session()->flash('success', 'Data status kepegawaian berhasil disinkronkan');
+                    }
+                )
+                ->requiresConfirmation()
+                ->modalHeading('Sync Status Kepegawaian')
+                ->modalSubheading('Apakah anda yakin ingin mensync data status kepegawaian dari data coba?'),
         ];
     }
 }

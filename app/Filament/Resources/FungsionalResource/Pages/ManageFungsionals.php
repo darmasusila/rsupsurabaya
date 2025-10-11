@@ -14,6 +14,19 @@ class ManageFungsionals extends ManageRecords
     {
         return [
             Actions\CreateAction::make(),
+            Actions\Action::make('sync')
+                ->label('Sync Fungsional')
+                ->color('success')
+                ->icon('heroicon-o-arrow-path')
+                ->action(
+                    function () {
+                        \App\Http\Controllers\SyncController::syncProfesi();
+                        session()->flash('success', 'Data fungsional berhasil disinkronkan');
+                    }
+                )
+                ->requiresConfirmation()
+                ->modalHeading('Sync Fungsional')
+                ->modalSubheading('Apakah anda yakin ingin mensync data fungsional dari data coba?'),
         ];
     }
 }

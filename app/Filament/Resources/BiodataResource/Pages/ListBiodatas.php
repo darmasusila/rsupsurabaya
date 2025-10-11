@@ -19,6 +19,7 @@ class ListBiodatas extends ListRecords
             Actions\CreateAction::make(),
             Actions\Action::make('sync')
                 ->label('Sync Pegawai')
+                ->icon('heroicon-o-arrow-path')
                 ->color('success')
                 ->requiresConfirmation()
                 ->successNotificationTitle('Pegawai berhasil disinkronkan')
@@ -36,6 +37,7 @@ class ListBiodatas extends ListRecords
                 }),
             Actions\Action::make('syncUserAkses')
                 ->label('Sync User Akses')
+                ->icon('heroicon-o-arrow-path')
                 ->color('success')
                 ->hidden(fn() => config('app.debug') === true ? false : true)
                 ->requiresConfirmation()

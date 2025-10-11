@@ -14,6 +14,19 @@ class ManageUnits extends ManageRecords
     {
         return [
             Actions\CreateAction::make(),
+            Actions\Action::make('sync')
+                ->label('Sync Unit Kerja')
+                ->color('success')
+                ->icon('heroicon-o-arrow-path')
+                ->action(
+                    function () {
+                        \App\Http\Controllers\SyncController::syncUnit();
+                        session()->flash('success', 'Data unit kerja berhasil disinkronkan');
+                    }
+                )
+                ->requiresConfirmation()
+                ->modalHeading('Sync Unit Kerja')
+                ->modalSubheading('Apakah anda yakin ingin mensync data unit kerja dari data coba?'),
         ];
     }
 }

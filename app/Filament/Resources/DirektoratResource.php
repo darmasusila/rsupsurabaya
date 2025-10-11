@@ -51,6 +51,7 @@ class DirektoratResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('nama')
                     ->label('Nama Direktorat')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('struktural.nama')
                     ->label('Struktural')

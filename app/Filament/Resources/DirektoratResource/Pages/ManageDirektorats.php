@@ -14,6 +14,19 @@ class ManageDirektorats extends ManageRecords
     {
         return [
             Actions\CreateAction::make(),
+            Actions\Action::make('sync')
+                ->label('Sync Direktorat')
+                ->color('success')
+                ->icon('heroicon-o-arrow-path')
+                ->action(
+                    function () {
+                        \App\Http\Controllers\SyncController::syncDirektorat();
+                        session()->flash('success', 'Data direktorat berhasil disinkronkan');
+                    }
+                )
+                ->requiresConfirmation()
+                ->modalHeading('Sync Direktorat')
+                ->modalSubheading('Apakah anda yakin ingin mensync data direktorat dari data coba?'),
         ];
     }
 }

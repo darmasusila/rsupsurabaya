@@ -53,6 +53,7 @@ class LaporanPegawai extends Page
             'biodata.nama',
             'fungsional.nama as fungsional',
             'direktorat.nama as direktorat',
+            'departemen.nama as departemen',
             'jenis_tenaga.nama as jenis_tenaga',
             'status_kepegawaian.nama as status_kepegawaian',
             'biodata.jenis_kelamin',
@@ -62,6 +63,7 @@ class LaporanPegawai extends Page
             ->join('biodata', 'pegawai.biodata_id', '=', 'biodata.id')
             ->leftjoin('fungsional', 'pegawai.fungsional_id', '=', 'fungsional.id')
             ->leftjoin('direktorat', 'pegawai.direktorat_id', '=', 'direktorat.id')
+            ->leftjoin('departemen', 'pegawai.departemen_id', '=', 'departemen.id')
             ->leftjoin('jenis_tenaga', 'pegawai.jenis_tenaga_id', '=', 'jenis_tenaga.id')
             ->leftjoin('status_kepegawaian', 'pegawai.status_kepegawaian_id', '=', 'status_kepegawaian.id')
             ->leftjoin('pendidikan', 'pendidikan.biodata_id', '=', 'biodata.id')

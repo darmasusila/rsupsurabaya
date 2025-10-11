@@ -14,6 +14,7 @@ class Unit extends Model
         'keterangan',
         'direktorat_id',
         'struktural_id',
+        'departemen_id',
         'created_at',
         'updated_at'
     ];
@@ -25,6 +26,11 @@ class Unit extends Model
     public function struktural()
     {
         return $this->belongsTo(Struktural::class);
+    }
+
+    public function departemen()
+    {
+        return $this->belongsTo(Departemen::class);
     }
 
     public function direktorat()

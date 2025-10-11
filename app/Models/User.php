@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Storage;
 use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable implements FilamentUser, HasAvatar, MustVerifyEmail
 {
@@ -69,5 +70,26 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, MustVerif
     public function canAccessPanel(Panel $panel): bool
     {
         return true;
+    }
+
+    public static function getPegawaiId(): ?int
+    {
+        $email = Auth::user()->email;
+
+        $biodata = Biodata::where('email', $email)->first();
+        if ($biodata) {
+            return Pegawai::where('biodata_id', $biodata->id)->value('id');
+        }
+        return null;
+    }
+
+    public static function getUserHasRole(string $role): bool
+    {
+        $user = User::find(Auth::id());
+        if (!$user or $user->name == 'admin') {
+            return false;
+        }
+
+        return $user->hasRole($role);
     }
 }
