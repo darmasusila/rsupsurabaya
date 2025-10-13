@@ -185,6 +185,21 @@ class PegawaiResource extends Resource
                 Tables\Filters\SelectFilter::make('direktorat_id')
                     ->label('Direktorat')
                     ->relationship('direktorat', 'nama'),
+                Tables\Filters\SelectFilter::make('struktural_id')
+                    ->label('Struktural')
+                    ->relationship('struktural', 'nama'),
+                Tables\Filters\SelectFilter::make('fungsional_id')
+                    ->label('Fungsional')
+                    ->relationship('fungsional', 'nama'),
+                Tables\Filters\SelectFilter::make('biodata.jenis_kelamin')
+                    ->label('Jenis Kelamin')
+                    ->options([
+                        'Laki-Laki' => 'Laki-Laki',
+                        'Perempuan' => 'Perempuan',
+                    ]),
+                // Tables\Filters\SelectFilter::make('departemen_id')
+                //     ->label('Departemen')
+                //     ->relationship('departemen', 'nama'),
                 Tables\Filters\SelectFilter::make('jenis_tenaga_id')
                     ->label('Jenis Tenaga')
                     ->relationship('jenisTenaga', 'nama'),

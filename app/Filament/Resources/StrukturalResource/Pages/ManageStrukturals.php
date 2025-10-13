@@ -18,6 +18,7 @@ class ManageStrukturals extends ManageRecords
                 ->label('Sync Struktural')
                 ->color('success')
                 ->icon('heroicon-o-arrow-path')
+                ->hidden(fn() => config('app.debug') === true ? false : true)
                 ->action(
                     function () {
                         \App\Http\Controllers\SyncController::syncStruktural();

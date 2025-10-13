@@ -68,6 +68,7 @@ class LaporanPegawai extends Page
             ->leftjoin('status_kepegawaian', 'pegawai.status_kepegawaian_id', '=', 'status_kepegawaian.id')
             ->leftjoin('pendidikan', 'pendidikan.biodata_id', '=', 'biodata.id')
             ->leftjoin('unit', 'pegawai.unit_id', '=', 'unit.id')
+            ->where('pegawai.is_active', 1)
             ->get()->toArray(); // Ambil data pegawai sesuai filter yang diberikan
 
 

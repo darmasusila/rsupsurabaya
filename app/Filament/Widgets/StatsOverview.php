@@ -20,7 +20,8 @@ class StatsOverview extends BaseWidget
 
     protected function getStats(): array
     {   // Menghitung statistik pegawai
-        $jumlahPegawai = Biodata::count();
+        $jumlahPegawai = Biodata::join('pegawai', 'biodata.id', '=', 'pegawai.biodata_id')
+            ->count();
 
         $jumlahPegawaiAktif = Biodata::join('pegawai', 'biodata.id', '=', 'pegawai.biodata_id')
             ->where('pegawai.is_active', true)

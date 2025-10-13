@@ -18,6 +18,7 @@ class ManageFungsionals extends ManageRecords
                 ->label('Sync Fungsional')
                 ->color('success')
                 ->icon('heroicon-o-arrow-path')
+                ->hidden(fn() => config('app.debug') === true ? false : true)
                 ->action(
                     function () {
                         \App\Http\Controllers\SyncController::syncProfesi();

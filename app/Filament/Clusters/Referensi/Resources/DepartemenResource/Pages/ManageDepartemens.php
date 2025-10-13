@@ -18,6 +18,7 @@ class ManageDepartemens extends ManageRecords
                 ->label('Sync Departemen')
                 ->color('success')
                 ->icon('heroicon-o-arrow-path')
+                ->hidden(fn() => config('app.debug') === true ? false : true)
                 ->action(
                     function () {
                         \App\Http\Controllers\SyncController::syncDepartemen();

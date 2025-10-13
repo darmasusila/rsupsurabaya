@@ -40,7 +40,12 @@
                     data: @json($data),
                 },
                 slice: {
-                    rows: [{ uniqueName: "direktorat" }],
+                    rows: [
+                        { uniqueName: "jenis_tenaga" }, 
+                        { uniqueName: "fungsional" },
+                        { uniqueName: "unit" },
+                        { uniqueName: "nama" }
+                    ],
                     columns: [{ uniqueName: "status_kepegawaian" }],
                     measures: [{ uniqueName: "id", aggregation: "count" }],
                 },
