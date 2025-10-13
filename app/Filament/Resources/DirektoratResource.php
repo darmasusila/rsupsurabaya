@@ -41,6 +41,11 @@ class DirektoratResource extends Resource
                             ->label('Struktural')
                             ->required()
                             ->relationship('struktural', 'nama'),
+
+                        Forms\Components\TextInput::make('urutan')
+                            ->label('Urutan')
+                            ->numeric()
+                            ->nullable(),
                     ]),
             ]);
     }

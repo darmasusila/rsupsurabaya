@@ -54,7 +54,7 @@ class BiodataResource extends Resource
                             ->label('Jenis Kelamin')
                             ->required()
                             ->options([
-                                'Laki-Laki' => 'Laki-Laki',
+                                'Laki - Laki' => 'Laki - Laki',
                                 'Perempuan' => 'Perempuan',
                             ]),
                         Forms\Components\TextInput::make('tempat_lahir')

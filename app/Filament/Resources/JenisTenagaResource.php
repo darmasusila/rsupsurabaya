@@ -37,6 +37,10 @@ class JenisTenagaResource extends Resource
                             ->required()
                             ->maxLength(255)
                             ->unique(ignoreRecord: true),
+                        Forms\Components\TextInput::make('urutan')
+                            ->label('Urutan')
+                            ->numeric()
+                            ->nullable(),
                     ]),
             ]);
     }

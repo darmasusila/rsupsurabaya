@@ -12,6 +12,7 @@ class Direktorat extends Model
     protected $fillable = [
         'nama',
         'struktural_id',
+        'urutan'
     ];
     // add guaded
     protected $guarded = ['id'];

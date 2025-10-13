@@ -67,7 +67,7 @@ class PegawaiResource extends Resource
                                         Forms\Components\Select::make('jenis_kelamin')
                                             ->label('Jenis Kelamin')
                                             ->options([
-                                                'Laki-Laki' => 'Laki-Laki',
+                                                'Laki - Laki' => 'Laki - Laki',
                                                 'Perempuan' => 'Perempuan',
                                             ]),
                                     ])

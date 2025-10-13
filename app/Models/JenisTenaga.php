@@ -11,6 +11,7 @@ class JenisTenaga extends Model
     // add fillable
     protected $fillable = [
         'nama',
+        'urutan'
     ];
     // add guaded
     protected $guarded = ['id'];
