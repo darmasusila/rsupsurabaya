@@ -27,11 +27,18 @@ class Pegawai extends Model
         'no_sip',
         'tanggal_akhir',
         'is_active',
+        'tgl_promosi',
+        'tgl_mutasi',
+        'tgl_pensiun',
+        'departemen_id',
+        'direktorat_id',
+        'created_at',
+        'updated_at',
     ];
     // add guaded
     protected $guarded = ['id'];
     // add hidden
-    protected $hidden = ['created_at', 'updated_at'];
+    // protected $hidden = ['created_at', 'updated_at'];
 
     public function biodata()
     {
@@ -71,6 +78,11 @@ class Pegawai extends Model
     public function pendidikan()
     {
         return $this->hasMany(Pendidikan::class, 'biodata_id', 'biodata_id');
+    }
+
+    public function departemen()
+    {
+        return $this->belongsTo(Departemen::class, 'departemen_id');
     }
 
     public function isActive()

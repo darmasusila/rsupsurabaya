@@ -18,6 +18,8 @@ use Filament\Tables\Columns\Summarizers\Count;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Enums\FiltersLayout;
+use Filament\Forms\Components\Tabs;
+use Filament\Tables\Filters\Filter;
 
 class PegawaiResource extends Resource
 {
@@ -79,16 +81,22 @@ class PegawaiResource extends Resource
                         Forms\Components\Select::make('struktural_id')
                             ->label('Jabatan Struktural')
                             ->relationship('struktural', 'nama'),
-                        Forms\Components\Select::make('direktorat_id')
-                            ->label('Direktorat')
-                            ->relationship('direktorat', 'nama'),
                         Forms\Components\Select::make('jenis_tenaga_id')
                             ->label('Jenis Tenaga')
                             ->relationship('jenisTenaga', 'nama')
                             ->required(),
                         Forms\Components\Select::make('status_kepegawaian_id')
                             ->label('Status Kepegawaian')
+                            ->required()
                             ->relationship('statusKepegawaian', 'nama'),
+                        Forms\Components\Select::make('direktorat_id')
+                            ->label('Direktorat')
+                            ->required()
+                            ->relationship('direktorat', 'nama'),
+                        Forms\Components\Select::make('departemen_id')
+                            ->label('Departemen')
+                            ->required()
+                            ->relationship('departemen', 'nama'),
                         Forms\Components\Select::make('unit_id')
                             ->label('Unit Kerja')
                             ->relationship('unit', 'nama')
@@ -108,20 +116,68 @@ class PegawaiResource extends Resource
                                             ->required()
                                     ])
                             ),
-                        Forms\Components\TextInput::make('nip')
-                            ->label('NIP')
-                            ->maxLength(18),
-
                     ]),
-                Section::make('Status Keaktifan Pegawai')
-                    ->columns(1)
-                    ->schema([
-                        Forms\Components\Toggle::make('is_active')
-                            ->label('Aktif')
-                            ->inline(false)
-                            ->required()
-
+                Tabs::make('Tabs')
+                    ->tabs([
+                        Tabs\Tab::make('Kepegawaian')
+                            ->schema([
+                                Section::make('Informasi Nomor Kepegawaian')
+                                    ->columns(2)
+                                    ->schema([
+                                        Forms\Components\TextInput::make('nip')
+                                            ->label('NIP')
+                                            ->maxLength(18),
+                                        Forms\Components\TextInput::make('no_npwp')
+                                            ->label('NPWP')
+                                            ->maxLength(18),
+                                        Forms\Components\TextInput::make('no_taspen')
+                                            ->label('No Taspen')
+                                            ->maxLength(50),
+                                        Forms\Components\Toggle::make('is_active')
+                                            ->label('Status KeAktifan')
+                                            ->inline(false)
+                                            ->required()
+                                    ]),
+                            ]),
+                        Tabs\Tab::make('STR / SIP')
+                            ->schema([
+                                Section::make('Informasi STR / SIP')
+                                    ->columns(2)
+                                    ->schema([
+                                        Forms\Components\TextInput::make('no_str')
+                                            ->label('No STR'),
+                                        Forms\Components\TextInput::make('no_sip')
+                                            ->label('No SIP'),
+                                        Forms\Components\DatePicker::make('tanggal_akhir_berlaku')
+                                            ->label('Tanggal Akhir Berlaku'),
+                                    ]),
+                            ]),
+                        Tabs\Tab::make('Tanggal Kepegawaian')
+                            ->schema([
+                                Section::make('Informasi Tanggal Kepegawaian')
+                                    ->columns(2)
+                                    ->schema([
+                                        Forms\Components\DateTimePicker::make('created_at')
+                                            ->disabled()
+                                            ->label('Tanggal Masuk'),
+                                        Forms\Components\DateTimePicker::make('tgl_promosi')
+                                            ->label('Tanggal Promosi')
+                                            ->timezone('Indonesia/Jakarta')
+                                            ->native(false),
+                                        Forms\Components\DateTimePicker::make('tgl_mutasi')
+                                            ->label('Tanggal Mutasi')
+                                            ->timezone('Indonesia/Jakarta')
+                                            ->native(false),
+                                        Forms\Components\DateTimePicker::make('tgl_pensiun')
+                                            ->label('Tanggal Berhenti')
+                                            ->timezone('Indonesia/Jakarta')
+                                            ->native(false),
+                                    ]),
+                            ]),
                     ])
+                    ->activeTab(1)
+                    ->columnSpanFull(),
+
             ]);
     }
 
@@ -139,12 +195,6 @@ class PegawaiResource extends Resource
                     ->label('Jabatan Fungsional')
                     ->toggleable()
                     ->wrap()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('struktural.nama')
-                    ->label('Jabatan Struktural')
-                    ->searchable()
-                    ->wrap()
-                    ->toggleable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('direktorat.nama')
                     ->label('Direktorat')
@@ -197,15 +247,34 @@ class PegawaiResource extends Resource
                         'Laki-Laki' => 'Laki-Laki',
                         'Perempuan' => 'Perempuan',
                     ]),
-                // Tables\Filters\SelectFilter::make('departemen_id')
-                //     ->label('Departemen')
-                //     ->relationship('departemen', 'nama'),
+                Tables\Filters\SelectFilter::make('departemen_id')
+                    ->label('Departemen')
+                    ->relationship('departemen', 'nama'),
                 Tables\Filters\SelectFilter::make('jenis_tenaga_id')
                     ->label('Jenis Tenaga')
                     ->relationship('jenisTenaga', 'nama'),
                 Tables\Filters\SelectFilter::make('unit_id')
                     ->label('Unit')
-                    ->relationship('unit', 'nama')
+                    ->relationship('unit', 'nama'),
+                Tables\Filters\Filter::make('created_at')
+                    ->label('Tanggal Masuk')
+                    ->form([
+                        Forms\Components\DatePicker::make('created_from')
+                            ->label('Tgl Masuk Awal'),
+                        Forms\Components\DatePicker::make('created_until')
+                            ->label('Tgl Masuk Akhir'),
+                    ])
+                    ->query(function (Builder $query, array $data): Builder {
+                        return $query
+                            ->when(
+                                $data['created_from'],
+                                fn(Builder $query, $date): Builder => $query->whereDate('created_at', '>=', $date)
+                            )
+                            ->when(
+                                $data['created_until'],
+                                fn(Builder $query, $date): Builder => $query->whereDate('created_at', '<=', $date)
+                            );
+                    }),
             ], layout: FiltersLayout::AboveContent)
             ->filtersFormColumns(3)
             ->defaultPaginationPageOption(25)
