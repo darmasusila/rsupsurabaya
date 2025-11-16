@@ -8,6 +8,9 @@ use App\Http\Resources\LoginResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use Laravel\Sanctum\PersonalAccessToken;
+use Faker\Provider\ar_EG\Person;
 
 class AuthController extends Controller
 {
@@ -29,7 +32,15 @@ class AuthController extends Controller
                 return strpos($ability, ':') !== false;
             }));
             //create token with abilities
-            $token = $user->createToken('token', $abilities)->plainTextToken;
+            $token = $user->createToken(
+                'token',
+                $abilities,
+                Carbon::now()->addMinutes(60)
+            )->plainTextToken;
+
+            PersonalAccessToken::where('tokenable_id', $user->id)
+                ->where('expires_at', null)
+                ->update(['expires_at' => Carbon::now()->addMinutes(60)]);
 
             return new LoginResource([
                 'token' => $token,
@@ -38,7 +49,7 @@ class AuthController extends Controller
         } else {
             //jika gagal kirim response error
             return response()->json([
-                'message' => 'Invalid Credentials'
+                'message' => 'Invalid Credentials By Email or Password'
             ], 401);
         }
     }

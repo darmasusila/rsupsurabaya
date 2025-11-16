@@ -1,0 +1,10 @@
+php artisan queue:work --queue=default --sleep=3 --tries=3 --max-time=3600
+php artisan queue:work --queue=default --sleep=3 --tries=3 --max-time=3600
+php artisan queue:work --queue=default --sleep=3 --tries=3 --max-time=3600
+php artisan queue:work --queue=default --sleep=3 --tries=3 --max-time=3600
+php artisan queue:work --queue=default --sleep=3 --tries=3 --max-time=3600
+php artisan queue:work --queue=default --sleep=3 --tries=3 --max-time=3600
+php artisan queue:work --queue=default --sleep=3 --tries=3 --max-time=3600
+php artisan queue:work --queue=default --sleep=3 --tries=3 --max-time=3600
+php artisan queue:work --queue=default --sleep=3 --tries=3 --max-time=3600
+php artisan queue:work --queue=default --sleep=3 --tries=3 --max-time=3600

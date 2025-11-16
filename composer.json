@@ -27,7 +27,8 @@
         "owenvoke/blade-fontawesome": "^2.8",
         "pxlrbt/filament-excel": "^2.3",
         "resend/resend-laravel": "^0.16.1",
-        "rupadana/filament-api-service": "^3.4.4",
+        "rmsramos/activitylog": "^2.0",
+        "rupadana/filament-api-service": "^3.4",
         "socialiteproviders/google": "^4.1",
         "stechstudio/filament-impersonate": "^3.15"
     },

@@ -28,10 +28,12 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Jeffgreco13\FilamentBreezy\BreezyCore;
 use Rupadana\ApiService\ApiServicePlugin;
+use Rmsramos\Activitylog\ActivitylogPlugin;
 
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Auth;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -106,6 +108,14 @@ class AdminPanelProvider extends PanelProvider
             ThemesPlugin::make(),
             FilamentShieldPlugin::make(),
             ApiServicePlugin::make(),
+            ActivitylogPlugin::make()
+                ->navigationItem(
+                    function () {
+                        $user = User::find(Auth::id());
+                        return $user ? $user->can('view_any_pegawai') : false;
+                    }
+                )
+                ->navigationSort(99),
             BreezyCore::make()
                 ->myProfile(
                     shouldRegisterUserMenu: true, // Sets the 'account' link in the panel User Menu (default = true)

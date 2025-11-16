@@ -150,6 +150,7 @@ class PegawaiResource extends Resource
                                             ->label('No SIP'),
                                         Forms\Components\DatePicker::make('tanggal_akhir_berlaku')
                                             ->label('Tanggal Akhir Berlaku'),
+
                                     ]),
                             ]),
                         Tabs\Tab::make('Tanggal Kepegawaian')
@@ -172,6 +173,30 @@ class PegawaiResource extends Resource
                                             ->label('Tanggal Berhenti')
                                             ->timezone('Indonesia/Jakarta')
                                             ->native(false),
+                                    ]),
+                            ]),
+                        Tabs\Tab::make('Riwayat Pekerjaan Sebelumnya')
+                            ->schema([
+                                Section::make('Informasi Riwayat Pekerjaan Sebelumnya')
+                                    ->columns(2)
+                                    ->schema([
+                                        Forms\Components\TextInput::make('instansi_sebelumnya')
+                                            ->label('Instansi Sebelumnya'),
+                                        Forms\Components\TextInput::make('posisi_jabatan_sebelumnya')
+                                            ->label('Posisi Jabatan Sebelumnya')
+                                            ->maxLength(255),
+                                        Forms\Components\TextInput::make('lama_bekerja')
+                                            ->label('Lama Bekerja (dalam tahun)')
+                                            ->minValue(0)
+                                            ->maxValue(30)
+                                            ->numeric(),
+                                        Forms\Components\Select::make('status_keahlian')
+                                            ->label('Status Keahlian')
+                                            ->options([
+                                                'Mahir' => 'Mahir',
+                                                'Madya' => 'Madya',
+                                                'Pemula' => 'Pemula',
+                                            ]),
                                     ]),
                             ]),
                     ])

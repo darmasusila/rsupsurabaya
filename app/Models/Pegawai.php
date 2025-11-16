@@ -3,11 +3,29 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Biodata;
+use App\Models\Fungsional;
+use App\Models\Struktural;
+use App\Models\JenisTenaga;
+use App\Models\StatusKepegawaian;
+use App\Models\Unit;
+use App\Models\Departemen;
+use App\Models\Pendidikan;
+// use Spatie\Activitylog\Traits\LogsActivity;
+// use Spatie\Activitylog\LogOptions;
 
 class Pegawai extends Model
 {
+    // use LogsActivity;
     //
     public $table = 'pegawai';
+
+    /*public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['status_kepegawaian_id', 'unit_id', 'struktural_id', 'pendidikan_id', 'fungsional_id', 'jenis_tenaga_id', 'nip', 'tingkat_ahli', 'kelas_jabatan', 'golongan', 'tmt_golongan', 'no_sk', 'no_str', 'no_sip', 'tanggal_akhir', 'is_active', 'tgl_promosi', 'tgl_mutasi', 'tgl_pensiun', 'departemen_id', 'direktorat_id', 'no_npwp', 'no_taspen', 'instansi_sebelumnya']);
+    }*/
+
     // add fillable
     protected $fillable = [
         'biodata_id',
@@ -34,6 +52,12 @@ class Pegawai extends Model
         'direktorat_id',
         'created_at',
         'updated_at',
+        'no_npwp',
+        'no_taspen',
+        'instansi_sebelumnya',
+        'posisi_jabatan_sebelumnya',
+        'lama_bekerja',
+        'status_keahlian',
     ];
     // add guaded
     protected $guarded = ['id'];
@@ -110,6 +134,7 @@ class Pegawai extends Model
     {
         return $this->hasMany(Pegawai::class);
     }
+
 
     public function cutis()
     {

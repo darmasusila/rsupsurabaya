@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 class SyncController extends Controller
 {
+    public static $token;
+
     public static function syncPegawai()
     {
         $biodata = \App\Models\Biodata::all();
@@ -433,5 +437,79 @@ class SyncController extends Controller
                 $unit->save();
             }
         }
+    }
+
+    public static function syncPelatihan()
+    {
+        // panggil service sync pelatihan
+        $service = new \App\Services\ApiService();
+        self::$token = $service->getToken();
+
+        self::syncBiodataIdDiklat(self::$token);
+        return response()->json(['message' => 'Pelatihan data synced successfully']);
+    }
+
+    public static function syncBiodataIdDiklat($token)
+    {
+        // panggil service sync biodata id diklat
+        $service = new \App\Services\ApiService();
+
+        $response = $service->getAllNik($token);
+        $dataNik = $response->toArray();
+        foreach ($dataNik as $data) {
+            // cari biodata berdasarkan nik
+            if (!isset($data['nik'])) {
+                continue;
+            }
+            $biodata = \App\Models\Biodata::where('nik', $data['nik'])->first();
+            if ($biodata) {
+                $biodata->diklat_biodata_id = $data['biodata_id'];
+                $biodata->save();
+
+                // sync pelatihan berdasarkan biodata id diklat
+                if (!isset($data['biodata_id'])) {
+                    continue;
+                }
+
+                Log::info('Syncing pelatihan for biodata_id: ' . $data['biodata_id']);
+                // panggil job syncDiklat
+                \App\Jobs\syncDiklat::dispatch($token, $biodata->id);
+            }
+        }
+    }
+
+    public static function syncFellowship()
+    {
+        // panggil service sync fellowship
+        $service = new \App\Services\ApiService();
+        self::$token = $service->getToken();
+
+        // panggil service sync biodata id diklat
+        $service = new \App\Services\ApiService();
+
+        $response = $service->getAllNik(self::$token);
+        $dataNik = $response->toArray();
+        foreach ($dataNik as $data) {
+            // cari biodata berdasarkan nik
+            if (!isset($data['nik'])) {
+                continue;
+            }
+            $biodata = \App\Models\Biodata::where('nik', $data['nik'])->first();
+            if ($biodata) {
+                $biodata->diklat_biodata_id = $data['biodata_id'];
+                $biodata->save();
+
+                // sync pelatihan berdasarkan biodata id diklat
+                if (!isset($data['biodata_id'])) {
+                    continue;
+                }
+
+                Log::info('Syncing pelatihan for biodata_id: ' . $data['biodata_id']);
+                // panggil job syncDiklat
+                \App\Jobs\syncFellowship::dispatch(self::$token, $biodata->id);
+            }
+        }
+
+        return response()->json(['message' => 'Fellowship data synced successfully']);
     }
 }

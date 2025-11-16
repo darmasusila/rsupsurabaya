@@ -33,4 +33,9 @@ class Pendidikan extends Model
     {
         return $this->belongsTo(Biodata::class);
     }
+
+    public function pegawai()
+    {
+        return $this->hasManyThrough(Pegawai::class, Biodata::class, 'id', 'biodata_id', 'biodata_id', 'id');
+    }
 }

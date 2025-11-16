@@ -11,6 +11,8 @@
     }
 </style>
 <link href="{{ asset('webdatarocks/webdatarocks.min.css')}}" rel="stylesheet" />
+<link rel="stylesheet" type="text/css"
+href="https://cdn.webdatarocks.com/latest/theme/lightblue/webdatarocks.css" />
 <script src="{{ asset('webdatarocks/webdatarocks.toolbar.js')}}"></script>
 <script src="{{ asset('webdatarocks/webdatarocks.js')}}"></script>
 <script src="{{ asset('plugins/jszip/jszip.js') }}"></script>

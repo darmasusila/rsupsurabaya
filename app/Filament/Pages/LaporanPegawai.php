@@ -16,6 +16,7 @@ use App\Models\Pegawai;
 use Filament\Navigation\NavigationItem;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class LaporanPegawai extends Page
 {
@@ -59,6 +60,7 @@ class LaporanPegawai extends Page
             'biodata.jenis_kelamin',
             'pendidikan.jenjang',
             'unit.nama as unit',
+            DB::raw('coalesce(vw_rekap_pelatihan.pelatihan, 0) as total_pelatihan'),
         )
             ->join('biodata', 'pegawai.biodata_id', '=', 'biodata.id')
             ->leftjoin('fungsional', 'pegawai.fungsional_id', '=', 'fungsional.id')
@@ -68,6 +70,7 @@ class LaporanPegawai extends Page
             ->leftjoin('status_kepegawaian', 'pegawai.status_kepegawaian_id', '=', 'status_kepegawaian.id')
             ->leftjoin('pendidikan', 'pendidikan.biodata_id', '=', 'biodata.id')
             ->leftjoin('unit', 'pegawai.unit_id', '=', 'unit.id')
+            ->leftjoin('vw_rekap_pelatihan', 'vw_rekap_pelatihan.pegawai_id', '=', 'pegawai.id')
             ->where('pegawai.is_active', 1)
             ->get()->toArray(); // Ambil data pegawai sesuai filter yang diberikan
 
