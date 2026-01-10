@@ -156,4 +156,9 @@ class Pegawai extends Model
         }
         return 'N/A';
     }
+
+    public function mentorMagang()
+    {
+        return $this->hasMany(Magang::class, 'mentor_id');
+    }
 }
