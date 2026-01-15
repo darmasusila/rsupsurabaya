@@ -44,7 +44,7 @@ href="https://cdn.webdatarocks.com/latest/theme/lightblue/webdatarocks.css" />
                 slice: {
                     rows: [
                         { uniqueName: "jenis_tenaga" }, 
-                        { uniqueName: "fungsional" },
+                        // { uniqueName: "fungsional" },
                         { uniqueName: "unit" },
                         { uniqueName: "nama" }
                     ],

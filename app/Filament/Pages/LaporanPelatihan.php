@@ -55,7 +55,7 @@ class LaporanPelatihan extends Page
             ->join('biodata', 'pegawai.biodata_id', '=', 'biodata.id')
             ->leftjoin('jenis_tenaga', 'pegawai.jenis_tenaga_id', '=', 'jenis_tenaga.id')
             ->leftjoin('status_kepegawaian', 'pegawai.status_kepegawaian_id', '=', 'status_kepegawaian.id')
-            ->leftjoin('unit', 'pegawai.unit    _id', '=', 'unit.id')
+            ->leftjoin('unit', 'pegawai.unit_id', '=', 'unit.id')
             ->leftjoin('diklat_jenis', 'diklat_pelatihan.diklat_jenis_id', '=', 'diklat_jenis.id')
             ->leftjoin('diklat_kategori', 'diklat_pelatihan.diklat_kategori_id', '=', 'diklat_kategori.id')
             ->leftjoin('diklat_metode', 'diklat_pelatihan.diklat_metode_id', '=', 'diklat_metode.id')

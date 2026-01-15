@@ -55,6 +55,10 @@ class MagangResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('pendidikan')
                     ->maxLength(255),
+                Forms\Components\TextInput::make('posisi')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('penempatan')
+                    ->maxLength(255),
                 Forms\Components\Toggle::make('is_active')
                     ->label('Aktif')
                     ->default(true),
