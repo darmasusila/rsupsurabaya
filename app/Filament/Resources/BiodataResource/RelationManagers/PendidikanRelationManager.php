@@ -36,6 +36,7 @@ class PendidikanRelationManager extends RelationManager
                                 'S3' => 'S3',
                                 'Spesialis' => 'Spesialis',
                                 'Profesi' => 'Profesi',
+                                'D1' => 'D1',
                             ]),
                         Forms\Components\TextInput::make('program_studi')
                             ->label('Program Studi')

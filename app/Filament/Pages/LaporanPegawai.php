@@ -52,6 +52,7 @@ class LaporanPegawai extends Page
     {
         // Lakukan query untuk mendapatkan data pegawai berdasarkan filter
         // data pegawai
+
         $results = Pegawai::Select(
             'pegawai.id',
             'biodata.nama',
@@ -63,6 +64,8 @@ class LaporanPegawai extends Page
             'biodata.jenis_kelamin',
             'pendidikan.jenjang',
             'unit.nama as unit',
+            'pegawai.golongan',
+            'pegawai.jenjang_jabatan',
             DB::raw('coalesce(vw_rekap_pelatihan.pelatihan, 0) as total_pelatihan'),
         )
             ->join('biodata', 'pegawai.biodata_id', '=', 'biodata.id')

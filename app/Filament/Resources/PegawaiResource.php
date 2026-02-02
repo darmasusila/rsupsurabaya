@@ -133,6 +133,34 @@ class PegawaiResource extends Resource
                                         Forms\Components\TextInput::make('no_taspen')
                                             ->label('No Taspen')
                                             ->maxLength(50),
+                                        Forms\Components\Select::make('golongan')
+                                            ->label('Golongan')
+                                            ->options([
+                                                'II/a' => 'II/a',
+                                                'II/b' => 'II/b',
+                                                'II/c' => 'II/c',
+                                                'II/d' => 'II/d',
+                                                'III/a' => 'III/a',
+                                                'III/b' => 'III/b',
+                                                'III/c' => 'III/c',
+                                                'III/d' => 'III/d',
+                                                'IV/a' => 'IV/a',
+                                                'IV/b' => 'IV/b',
+                                                'IV/c' => 'IV/c',
+                                                'IV/d' => 'IV/d',
+                                                'IV/e' => 'IV/e',
+                                                'V' => 'V',
+                                                'VI' => 'VI',
+                                                'VII' => 'VII',
+                                                'VIII' => 'VIII',
+                                                'IX' => 'IX',
+                                                'X' => 'X',
+                                                'XI' => 'XI',
+                                                'XII' => 'XII',
+                                            ]),
+                                        Forms\Components\TextInput::make('jenjang_jabatan')
+                                            ->label('Jenjang Jabatan')
+                                            ->maxLength(50),
                                         Forms\Components\Toggle::make('is_active')
                                             ->label('Status KeAktifan')
                                             ->inline(false)
