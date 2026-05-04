@@ -12,7 +12,7 @@ class UlangtahunOverview extends Widget
     protected static ?int $sort = 5;
     protected static string $view = 'filament.widgets.ulangtahun-overview';
     public ?array $data = []; // Untuk menyimpan data form
-    // protected int | string | array $columnSpan = 'full';
+    protected int | string | array $columnSpan = 'full';
     public ?bool $visible = null;
 
     public function mount()

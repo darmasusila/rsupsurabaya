@@ -19,7 +19,8 @@ class ExpiredstrOverview extends Widget
     {
         // Inisialisasi data atau logika lainnya jika diperlukan
         $user = User::find(Auth::id());
-        $this->visible = $user ? $user->can('view_any_pegawai') : false;
+        // $this->visible = $user ? $user->can('view_any_pegawai') : false;
+        $this->visible = false; // Set visible ke false untuk menyembunyikan widget
         $this->data = [
             // Inisialisasi data atau logika lainnya jika diperlukan
             'expired_str' => DB::Select("select p.nip, b.nama, p.no_sip , p.tanggal_akhir_berlaku, u.nama as unit, 'expired' as status 

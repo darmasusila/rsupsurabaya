@@ -1,5 +1,5 @@
 <x-filament-widgets::widget>
-    @if ($visible)
+    @if ($this->visible)
     <x-filament::section collapsible
         icon="heroicon-o-user"
         icon-color="info"
