@@ -23,6 +23,7 @@ class Biodata extends Model
         'agama',
         'status_perkawinan',
         'golongan_darah',
+        'nama_ibu',
     ];
     // add guaded
     protected $guarded = ['id'];
@@ -57,5 +58,10 @@ class Biodata extends Model
             return false;
 
         return true;
+    }
+
+    public function vaksinasi()
+    {
+        return $this->hasMany(Vaksinasi::class, 'biodata_id');
     }
 }

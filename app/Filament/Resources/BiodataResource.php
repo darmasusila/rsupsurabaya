@@ -65,6 +65,10 @@ class BiodataResource extends Resource
                             ->label('Tanggal Lahir')
                             ->required()
                             ->maxDate(now()),
+                        Forms\Components\TextInput::make('nama_ibu')
+                            ->label('Nama Ibu')
+                            ->nullable()
+                            ->maxLength(255),
                     ])
                     ->columns(2),
                 Section::make('Alamat dan Kontak')
@@ -130,6 +134,7 @@ class BiodataResource extends Resource
     {
         return [
             RelationManagers\PendidikanRelationManager::class,
+            RelationManagers\VaksinasiRelationManager::class,
         ];
     }
 
